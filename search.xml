@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>The Master Theorem(主定理)</title>
+    <url>/2020/04/19/The%20Master%20Theorem/</url>
+    <content><![CDATA[<h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
+            <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence<br>$$<br>    T(n) = aT(n/b) + f(n)<br>$$<br>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log_{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log_{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log_{b}{a}})$, then $T(n) = \Theta(n^{\log_{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
+          </div>
+
+<a id="more"></a>
+
+<p>The master method</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Test</title>
     <url>/2020/04/19/test/</url>
     <content><![CDATA[<p>This blog is for test the website</p>
