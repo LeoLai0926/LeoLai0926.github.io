@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>The Master Theorem(主定理)</title>
+    <title>The Master Method and the Master Theorem</title>
     <url>/2020/04/19/The%20Master%20Theorem/</url>
-    <content><![CDATA[<h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
+    <content><![CDATA[<p>The master method provides a “cookbook” method for solving recurrences of the form<br>$$<br>    T(n) = aT(n/b) + f(n) \tag{1}<br>$$<br>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
+<a id="more"></a>
+
+<h1 id="The-Master-Method"><a href="#The-Master-Method" class="headerlink" title="The Master Method"></a>The Master Method</h1><p>The recurrence (1) describes the running time of an algorithm that divides a problem of size $n$ into $a$ subproblems, each of size $n/b$, where $a$ and $b$ are positive constants. The $a$ subproblems are solved recursively, each in time $T(n/b)$. The function $f(n)$ encompasses the cost of dividing the problem and combining the results of the subproblems.</p>
+<p>As a matter of technical correctness, the recurrence is not actually well defined, because $n/b$ might not be an integer. Replacing each of the $a$ terms $T(n/b)$ with either $T(\lfloor n/b \rfloor)$ or $T(\lceil n/b \rceil)$ will not affect the asymptotic behavior of the recurrence.</p>
+<h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
             <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence<br>$$<br>    T(n) = aT(n/b) + f(n)<br>$$<br>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log_{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log_{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log_{b}{a}})$, then $T(n) = \Theta(n^{\log_{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
           </div>
 
-<a id="more"></a>
+<blockquote>
+<p>Notation Explanation</p>
+<ol>
+<li>$\Theta$-notation asymptotically bounds a function from above and below</li>
+<li>$O$-notation asymptotically bounds a function from above(asymptotic upper bound)</li>
+<li>$\Omega$-notation asymptotically bounds a function from below(asymptotic lower bound)</li>
+<li>$o$-notation asymptotically bounds a function from above but not tight</li>
+<li>$\omega$-notation asymptotically bounds a function from below but not tight</li>
+</ol>
+<p>For example: $2n = o(n^{2})$, but $2n^{2} \ne o(n^{2})$.</p>
+</blockquote>
+<p>In each of the three cases, we compare the function $f(n)$ with the function $n^{\log_{b}{a}}$. Intuitively, the larger of the two functions determines the solution to the recurrence.</p>
+<ul>
+<li>If, as in case 1, the function $n^{\log_{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log_{b}{a}})$</li>
+<li>If, as in case 3, the function $f(n)$ is larger, then the solution is $T(n)  = \Theta(f(n))$.</li>
+<li>If, as in case 2, the two functions are the same size, we multiply by a logarithmic factor, and the solution is $T(n) = \Theta(n^{\log_{b}{a}}\lg{n}) = \Theta(f(n)\lg{n})$.</li>
+</ul>
+<blockquote>
+<p>However, we need to be aware of some technicalities. </p>
+<ul>
+<li>In the first case, not only must $f(n)$ be smaller than $n^{\log_{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log_{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
+<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that<br>$$<br>  af(n/b) \leq cf(n)<br>$$</li>
+</ul>
+</blockquote>
+<div class="note [alert]">
+            <p>Note that the three cases do not cover all the possibilities for $f(n)$. There is a gap between cases 1 and 2 when $f(n)$ is smaller than $n^{\log_{b}{a}}$ but not polynomially smaller. Similarly, there is a gao between cases 2 and 3. </p><p>If the function $f(n)$ falls into one of these gaps, or if the regularity condition in case 3 fails to hold. we cannot use the master method to solve the recurrence</p>
+          </div>
 
-<p>The master method</p>
+<h1 id="Using-the-Master-Method"><a href="#Using-the-Master-Method" class="headerlink" title="Using the Master Method"></a>Using the Master Method</h1><p>To use the master method, we simply determine which case of the master theorem applies.</p>
 ]]></content>
       <categories>
         <category>Notes</category>

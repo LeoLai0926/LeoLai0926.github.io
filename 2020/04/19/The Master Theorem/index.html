@@ -23,15 +23,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="The Master Theorem             Theorem 4.1 (Master theorem)Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be definedon the nonnegative integers by the recurrence$$">
+  <meta name="description" content="The master method provides a “cookbook” method for solving recurrences of the form$$    T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}$$where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically pos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The Master Theorem(主定理)">
+<meta property="og:title" content="The Master Method and the Master Theorem">
 <meta property="og:url" content="http://yoursite.com/2020/04/19/The%20Master%20Theorem/index.html">
 <meta property="og:site_name" content="罗塞塔之石">
-<meta property="og:description" content="The Master Theorem             Theorem 4.1 (Master theorem)Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be definedon the nonnegative integers by the recurrence$$">
+<meta property="og:description" content="The master method provides a “cookbook” method for solving recurrences of the form$$    T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}$$where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically pos">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-19T13:36:58.000Z">
-<meta property="article:modified_time" content="2020-04-20T02:46:57.068Z">
+<meta property="article:modified_time" content="2020-04-20T03:55:00.326Z">
 <meta property="article:author" content="SharkChilli">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>The Master Theorem(主定理) | 罗塞塔之石</title>
+  <title>The Master Method and the Master Theorem | 罗塞塔之石</title>
   
 
 
@@ -214,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          The Master Theorem(主定理)
+          The Master Method and the Master Theorem
         </h1>
 
         <div class="post-meta">
@@ -231,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-20 10:46:57" itemprop="dateModified" datetime="2020-04-20T10:46:57+08:00">2020-04-20</time>
+                <time title="修改时间：2020-04-20 11:55:00" itemprop="dateModified" datetime="2020-04-20T11:55:00+08:00">2020-04-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,14 +249,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>652</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -268,13 +268,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
+        <p>The master method provides a “cookbook” method for solving recurrences of the form<br>$$<br>    T(n) = aT(n/b) + f(n) \tag{1}<br>$$<br>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
+<a id="more"></a>
+
+<h1 id="The-Master-Method"><a href="#The-Master-Method" class="headerlink" title="The Master Method"></a>The Master Method</h1><p>The recurrence (1) describes the running time of an algorithm that divides a problem of size $n$ into $a$ subproblems, each of size $n/b$, where $a$ and $b$ are positive constants. The $a$ subproblems are solved recursively, each in time $T(n/b)$. The function $f(n)$ encompasses the cost of dividing the problem and combining the results of the subproblems.</p>
+<p>As a matter of technical correctness, the recurrence is not actually well defined, because $n/b$ might not be an integer. Replacing each of the $a$ terms $T(n/b)$ with either $T(\lfloor n/b \rfloor)$ or $T(\lceil n/b \rceil)$ will not affect the asymptotic behavior of the recurrence.</p>
+<h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
             <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence<br>$$<br>    T(n) = aT(n/b) + f(n)<br>$$<br>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log_{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log_{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log_{b}{a}})$, then $T(n) = \Theta(n^{\log_{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
           </div>
 
-<a id="more"></a>
+<blockquote>
+<p>Notation Explanation</p>
+<ol>
+<li>$\Theta$-notation asymptotically bounds a function from above and below</li>
+<li>$O$-notation asymptotically bounds a function from above(asymptotic upper bound)</li>
+<li>$\Omega$-notation asymptotically bounds a function from below(asymptotic lower bound)</li>
+<li>$o$-notation asymptotically bounds a function from above but not tight</li>
+<li>$\omega$-notation asymptotically bounds a function from below but not tight</li>
+</ol>
+<p>For example: $2n = o(n^{2})$, but $2n^{2} \ne o(n^{2})$.</p>
+</blockquote>
+<p>In each of the three cases, we compare the function $f(n)$ with the function $n^{\log_{b}{a}}$. Intuitively, the larger of the two functions determines the solution to the recurrence.</p>
+<ul>
+<li>If, as in case 1, the function $n^{\log_{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log_{b}{a}})$</li>
+<li>If, as in case 3, the function $f(n)$ is larger, then the solution is $T(n)  = \Theta(f(n))$.</li>
+<li>If, as in case 2, the two functions are the same size, we multiply by a logarithmic factor, and the solution is $T(n) = \Theta(n^{\log_{b}{a}}\lg{n}) = \Theta(f(n)\lg{n})$.</li>
+</ul>
+<blockquote>
+<p>However, we need to be aware of some technicalities. </p>
+<ul>
+<li>In the first case, not only must $f(n)$ be smaller than $n^{\log_{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log_{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
+<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that<br>$$<br>  af(n/b) \leq cf(n)<br>$$</li>
+</ul>
+</blockquote>
+<div class="note [alert]">
+            <p>Note that the three cases do not cover all the possibilities for $f(n)$. There is a gap between cases 1 and 2 when $f(n)$ is smaller than $n^{\log_{b}{a}}$ but not polynomially smaller. Similarly, there is a gao between cases 2 and 3. </p><p>If the function $f(n)$ falls into one of these gaps, or if the regularity condition in case 3 fails to hold. we cannot use the master method to solve the recurrence</p>
+          </div>
 
-<p>The master method</p>
+<h1 id="Using-the-Master-Method"><a href="#Using-the-Master-Method" class="headerlink" title="Using the Master Method"></a>Using the Master Method</h1><p>To use the master method, we simply determine which case of the master theorem applies.</p>
 
     </div>
 
@@ -292,7 +323,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/04/19/The%20Master%20Theorem/" title="The Master Theorem(主定理)">http://yoursite.com/2020/04/19/The Master Theorem/</a>
+    <a href="http://yoursite.com/2020/04/19/The%20Master%20Theorem/" title="The Master Method and the Master Theorem">http://yoursite.com/2020/04/19/The Master Theorem/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -374,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Master-Theorem"><span class="nav-text">The Master Theorem</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Master-Method"><span class="nav-text">The Master Method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Master-Theorem"><span class="nav-text">The Master Theorem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Using-the-Master-Method"><span class="nav-text">Using the Master Method</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -446,12 +477,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">4k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
 
         
@@ -505,6 +536,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
