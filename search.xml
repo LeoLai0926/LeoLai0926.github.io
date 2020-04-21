@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于深度学习的目标检测技术演进</title>
+    <url>/2020/04/20/CV-review/</url>
+    <content><![CDATA[<h1 id="目标检测常见算法"><a href="#目标检测常见算法" class="headerlink" title="目标检测常见算法"></a>目标检测常见算法</h1><p>目标检测(object detection) 就是在给定的图片中精确找到物体所在位置, 并标注出物体的类别. object detection要解决的问题就是物体在哪里以及是什么的整个流程问题. 然而这个问题可不是那么容易解决的，物体的尺寸变化范围很大，摆放物体的角度，姿态不定，而且可以出现在图片的任何地方，更何况物体还可以是多个类别。</p>
+<h2 id="目前学术和工业界目标检测算法"><a href="#目前学术和工业界目标检测算法" class="headerlink" title="目前学术和工业界目标检测算法"></a>目前学术和工业界目标检测算法</h2><ol>
+<li><p>传统的目标检测算法</p>
+<ul>
+<li>Cascade + HOG</li>
+<li>DPM + Haar</li>
+<li>SVM</li>
+<li>以及上述方法的诸多改进、优化</li>
+</ul>
+</li>
+<li><p>候选区域/框 + 深度学习分类</p>
+<blockquote>
+<p>通过提取候选区域，并对相应区域进行以深度学习方法为主的分类的方案</p>
+</blockquote>
+<ul>
+<li>R-CNN<blockquote>
+<p>Selective Search + CNN + SVM</p>
+</blockquote>
+</li>
+<li>SPP-net<blockquote>
+<p>ROI Pooling</p>
+</blockquote>
+</li>
+<li>Fast R-CNN<blockquote>
+<p>Selective Search + CNN + ROI</p>
+</blockquote>
+</li>
+<li>Faster R-CNN<blockquote>
+<p>RPN + CNN + ROI</p>
+</blockquote>
+</li>
+<li>R-FCN</li>
+<li>等系列方法</li>
+</ul>
+</li>
+<li><p>基于深度学习的回归方法</p>
+<ul>
+<li>YOLO</li>
+<li>SSD</li>
+<li>DenseBox </li>
+<li>等方法</li>
+</ul>
+<p>以及最近出现的</p>
+<ul>
+<li>结合RNN算法的RRC detection</li>
+<li>结合DPM的Deformable CNN等</li>
+</ul>
+</li>
+</ol>
+<p><a href="https://imgchr.com/i/J13NtJ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/20/J13NtJ.jpg" alt="J13NtJ.jpg"></a></p>
+<h2 id="传统目标检测流程"><a href="#传统目标检测流程" class="headerlink" title="传统目标检测流程"></a>传统目标检测流程</h2><ol>
+<li>区域选择<blockquote>
+<p>穷举策略：采用滑动窗口，且设置不同的大小，不同的长宽比对图像进行遍历，时间复杂度高</p>
+</blockquote>
+</li>
+<li>特征提取<blockquote>
+<p>SIFT、HOG等；形态多样性、光照变化多样性、背景多样性使得特征鲁棒性差</p>
+</blockquote>
+</li>
+<li>分类器分类<blockquote>
+<p>主要有SVM、Adaboost等</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="传统的目标检测算法"><a href="#传统的目标检测算法" class="headerlink" title="传统的目标检测算法"></a>传统的目标检测算法</h2><h3 id="从图像识别的任务说起"><a href="#从图像识别的任务说起" class="headerlink" title="从图像识别的任务说起"></a>从图像识别的任务说起</h3><p>考虑一个图像任务, 既要把图中的物体识别出来，又要用方框框出它的位置。</p>
+<p><a href="https://imgchr.com/i/J18gbT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/20/J18gbT.jpg" alt="J18gbT.jpg"></a></p>
+<p>这个任务本质上就是下面这两个问题：</p>
+<ol>
+<li>图像识别</li>
+<li>定位</li>
+</ol>
+<p><strong>图像识别（classification）</strong></p>
+<p>输入：图片<br>输出：物体的类别<br>评估方法：准确率</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+      </categories>
+      <tags>
+        <tag>cv, RCNN, YOLO,</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The Master Method and the Master Theorem</title>
     <url>/2020/04/19/The%20Master%20Theorem/</url>
     <content><![CDATA[<p>The master method provides a “cookbook” method for solving recurrences of the form<br>$$<br>    T(n) = aT(n/b) + f(n) \tag{1}<br>$$<br>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
