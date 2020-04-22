@@ -281,40 +281,25 @@
       
         <h1 id="目标检测常见算法"><a href="#目标检测常见算法" class="headerlink" title="目标检测常见算法"></a>目标检测常见算法</h1><p>目标检测(object detection) 就是在给定的图片中精确找到物体所在位置, 并标注出物体的类别. object detection要解决的问题就是物体在哪里以及是什么的整个流程问题. 然而这个问题可不是那么容易解决的，物体的尺寸变化范围很大，摆放物体的角度，姿态不定，而且可以出现在图片的任何地方，更何况物体还可以是多个类别。</p>
 <a id="more"></a>
-
 <h2 id="目前学术和工业界目标检测算法"><a href="#目前学术和工业界目标检测算法" class="headerlink" title="目前学术和工业界目标检测算法"></a>目前学术和工业界目标检测算法</h2><ol>
-<li><p>传统的目标检测算法</p>
-<ul>
+<li>传统的目标检测算法<ul>
 <li>Cascade + HOG</li>
 <li>DPM + Haar</li>
 <li>SVM</li>
 <li>以及上述方法的诸多改进、优化</li>
 </ul>
 </li>
-<li><p>候选区域/框 + 深度学习分类</p>
-<blockquote>
+<li>候选区域/框 + 深度学习分类<blockquote>
 <p>通过提取候选区域，并对相应区域进行以深度学习方法为主的分类的方案</p>
-</blockquote>
 <ul>
-<li>R-CNN<blockquote>
-<p>Selective Search + CNN + SVM</p>
-</blockquote>
-</li>
-<li>SPP-net<blockquote>
-<p>ROI Pooling</p>
-</blockquote>
-</li>
-<li>Fast R-CNN<blockquote>
-<p>Selective Search + CNN + ROI</p>
-</blockquote>
-</li>
-<li>Faster R-CNN<blockquote>
-<p>RPN + CNN + ROI</p>
-</blockquote>
-</li>
+<li>R-CNN<br>Selective Search + CNN + SVM</li>
+<li>SPP-net<br>ROI Pooling</li>
+<li>Fast R-CNN<br>Selective Search + CNN + ROI</li>
+<li>Faster R-CNN<br>RPN + CNN + ROI</li>
 <li>R-FCN</li>
 <li>等系列方法</li>
 </ul>
+</blockquote>
 </li>
 <li><p>基于深度学习的回归方法</p>
 <ul>
@@ -355,12 +340,10 @@
 <div class="note ">
             <p><strong>识别(recognition)</strong><br>输入: 图片<br>输出: 物体的类别<br>评估方法: 准确率</p>
           </div>
-
 <p><img src="https://s1.ax1x.com/2020/04/21/J87C8K.jpg" alt=""></p>
 <div class="note ">
-            <p><strong>定位(localization)</strong><br>输入：图片<br>输出：方框在图片中的位置（x,y,w,h）<br>评估方法：检测评价函数Intersection-Over-Union(IoU)</p><blockquote><p><strong>Intersection-Over-Union(IoU)</strong><br>IoU是在目标检测的评价体系中的一种评估指标. 简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。<br>具体我们可以简单的理解为：检测结果(Detection Result, DR)与真实值(Ground Truth, GT)的交集比上它们的并集，即为检测的准确率 IoU<br>$$<br>\text{IoU} = \dfrac{\text{DR} \bigcap \text{GT}}{\text{DR} \bigcup \text{GT}}<br>$$<br><img src="https://s1.ax1x.com/2020/04/21/J8qTZ4.png" alt=""></p></blockquote>
+            <p><strong>定位(localization)</strong><br>输入：图片<br>输出：方框在图片中的位置（x,y,w,h）<br>评估方法：检测评价函数Intersection-Over-Union(IoU)</p><blockquote><p><strong>Intersection-Over-Union(IoU)</strong><br>IoU是在目标检测的评价体系中的一种评估指标. 简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。<br>具体我们可以简单的理解为：检测结果(Detection Result, DR)与真实值(Ground Truth, GT)的交集比上它们的并集，即为检测的准确率 IoU </p><script type="math/tex; mode=display">\text{IoU} = \dfrac{\text{DR} \bigcap \text{GT}}{\text{DR} \bigcup \text{GT}}</script><p><img src="https://s1.ax1x.com/2020/04/21/J8qTZ4.png" alt=""></p></blockquote>
           </div>
-
 <p><img src="https://s1.ax1x.com/2020/04/21/J8Ti0s.png" alt=""></p>
 <p>卷积神经网络CNN已经帮我们完成了图像识别（判定是猫还是狗）的任务了，我们只需要添加一些额外的功能来完成定位任务即可。</p>
 <h3 id="如何解决定位问题"><a href="#如何解决定位问题" class="headerlink" title="如何解决定位问题"></a>如何解决定位问题</h3><h4 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h4><p>将定位问题看做一个回归问题, 我们需要预测出 $(x, y, w, h)$ 四个参数的值, 从而得出方框的位置.</p>
@@ -584,7 +567,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">7k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

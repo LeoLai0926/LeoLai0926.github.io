@@ -5,40 +5,25 @@
     <url>/2020/04/20/CV-review/</url>
     <content><![CDATA[<h1 id="目标检测常见算法"><a href="#目标检测常见算法" class="headerlink" title="目标检测常见算法"></a>目标检测常见算法</h1><p>目标检测(object detection) 就是在给定的图片中精确找到物体所在位置, 并标注出物体的类别. object detection要解决的问题就是物体在哪里以及是什么的整个流程问题. 然而这个问题可不是那么容易解决的，物体的尺寸变化范围很大，摆放物体的角度，姿态不定，而且可以出现在图片的任何地方，更何况物体还可以是多个类别。</p>
 <a id="more"></a>
-
 <h2 id="目前学术和工业界目标检测算法"><a href="#目前学术和工业界目标检测算法" class="headerlink" title="目前学术和工业界目标检测算法"></a>目前学术和工业界目标检测算法</h2><ol>
-<li><p>传统的目标检测算法</p>
-<ul>
+<li>传统的目标检测算法<ul>
 <li>Cascade + HOG</li>
 <li>DPM + Haar</li>
 <li>SVM</li>
 <li>以及上述方法的诸多改进、优化</li>
 </ul>
 </li>
-<li><p>候选区域/框 + 深度学习分类</p>
-<blockquote>
+<li>候选区域/框 + 深度学习分类<blockquote>
 <p>通过提取候选区域，并对相应区域进行以深度学习方法为主的分类的方案</p>
-</blockquote>
 <ul>
-<li>R-CNN<blockquote>
-<p>Selective Search + CNN + SVM</p>
-</blockquote>
-</li>
-<li>SPP-net<blockquote>
-<p>ROI Pooling</p>
-</blockquote>
-</li>
-<li>Fast R-CNN<blockquote>
-<p>Selective Search + CNN + ROI</p>
-</blockquote>
-</li>
-<li>Faster R-CNN<blockquote>
-<p>RPN + CNN + ROI</p>
-</blockquote>
-</li>
+<li>R-CNN<br>Selective Search + CNN + SVM</li>
+<li>SPP-net<br>ROI Pooling</li>
+<li>Fast R-CNN<br>Selective Search + CNN + ROI</li>
+<li>Faster R-CNN<br>RPN + CNN + ROI</li>
 <li>R-FCN</li>
 <li>等系列方法</li>
 </ul>
+</blockquote>
 </li>
 <li><p>基于深度学习的回归方法</p>
 <ul>
@@ -79,12 +64,10 @@
 <div class="note ">
             <p><strong>识别(recognition)</strong><br>输入: 图片<br>输出: 物体的类别<br>评估方法: 准确率</p>
           </div>
-
 <p><img src="https://s1.ax1x.com/2020/04/21/J87C8K.jpg" alt=""></p>
 <div class="note ">
-            <p><strong>定位(localization)</strong><br>输入：图片<br>输出：方框在图片中的位置（x,y,w,h）<br>评估方法：检测评价函数Intersection-Over-Union(IoU)</p><blockquote><p><strong>Intersection-Over-Union(IoU)</strong><br>IoU是在目标检测的评价体系中的一种评估指标. 简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。<br>具体我们可以简单的理解为：检测结果(Detection Result, DR)与真实值(Ground Truth, GT)的交集比上它们的并集，即为检测的准确率 IoU<br>$$<br>\text{IoU} = \dfrac{\text{DR} \bigcap \text{GT}}{\text{DR} \bigcup \text{GT}}<br>$$<br><img src="https://s1.ax1x.com/2020/04/21/J8qTZ4.png" alt=""></p></blockquote>
+            <p><strong>定位(localization)</strong><br>输入：图片<br>输出：方框在图片中的位置（x,y,w,h）<br>评估方法：检测评价函数Intersection-Over-Union(IoU)</p><blockquote><p><strong>Intersection-Over-Union(IoU)</strong><br>IoU是在目标检测的评价体系中的一种评估指标. 简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。<br>具体我们可以简单的理解为：检测结果(Detection Result, DR)与真实值(Ground Truth, GT)的交集比上它们的并集，即为检测的准确率 IoU </p><script type="math/tex; mode=display">\text{IoU} = \dfrac{\text{DR} \bigcap \text{GT}}{\text{DR} \bigcup \text{GT}}</script><p><img src="https://s1.ax1x.com/2020/04/21/J8qTZ4.png" alt=""></p></blockquote>
           </div>
-
 <p><img src="https://s1.ax1x.com/2020/04/21/J8Ti0s.png" alt=""></p>
 <p>卷积神经网络CNN已经帮我们完成了图像识别（判定是猫还是狗）的任务了，我们只需要添加一些额外的功能来完成定位任务即可。</p>
 <h3 id="如何解决定位问题"><a href="#如何解决定位问题" class="headerlink" title="如何解决定位问题"></a>如何解决定位问题</h3><h4 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h4><p>将定位问题看做一个回归问题, 我们需要预测出 $(x, y, w, h)$ 四个参数的值, 从而得出方框的位置.</p>
@@ -145,15 +128,15 @@
   <entry>
     <title>The Master Method and the Master Theorem</title>
     <url>/2020/04/19/The%20Master%20Theorem/</url>
-    <content><![CDATA[<p>The master method provides a “cookbook” method for solving recurrences of the form<br>$$<br>    T(n) = aT(n/b) + f(n) \tag{1}<br>$$<br>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
+    <content><![CDATA[<p>The master method provides a “cookbook” method for solving recurrences of the form</p>
+<script type="math/tex; mode=display">
+    T(n) = aT(n/b) + f(n) \tag{1}</script><p>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
 <a id="more"></a>
-
 <h1 id="The-Master-Method"><a href="#The-Master-Method" class="headerlink" title="The Master Method"></a>The Master Method</h1><p>The recurrence (1) describes the running time of an algorithm that divides a problem of size $n$ into $a$ subproblems, each of size $n/b$, where $a$ and $b$ are positive constants. The $a$ subproblems are solved recursively, each in time $T(n/b)$. The function $f(n)$ encompasses the cost of dividing the problem and combining the results of the subproblems.</p>
 <p>As a matter of technical correctness, the recurrence is not actually well defined, because $n/b$ might not be an integer. Replacing each of the $a$ terms $T(n/b)$ with either $T(\lfloor n/b \rfloor)$ or $T(\lceil n/b \rceil)$ will not affect the asymptotic behavior of the recurrence.</p>
 <h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
-            <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence<br>$$<br>    T(n) = aT(n/b) + f(n)<br>$$<br>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log_{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log_{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log_{b}{a}})$, then $T(n) = \Theta(n^{\log_{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
+            <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence</p><script type="math/tex; mode=display">    T(n) = aT(n/b) + f(n)</script><p>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log<em>{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log</em>{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log<em>{b}{a}})$, then $T(n) = \Theta(n^{\log</em>{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
           </div>
-
 <blockquote>
 <p>Notation Explanation</p>
 <ol>
@@ -167,46 +150,44 @@
 </blockquote>
 <p>In each of the three cases, we compare the function $f(n)$ with the function $n^{\log_{b}{a}}$. Intuitively, the larger of the two functions determines the solution to the recurrence.</p>
 <ul>
-<li>If, as in <code>case 1</code>, the function $n^{\log_{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log_{b}{a}})$</li>
+<li>If, as in <code>case 1</code>, the function $n^{\log<em>{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log</em>{b}{a}})$</li>
 <li>If, as in <code>case 3</code>, the function $f(n)$ is larger, then the solution is $T(n)  = \Theta(f(n))$.</li>
 <li>If, as in <code>case 2</code>, the two functions are the same size, we multiply by a logarithmic factor, and the solution is $T(n) = \Theta(n^{\log_{b}{a}}\lg{n}) = \Theta(f(n)\lg{n})$.</li>
 </ul>
 <blockquote>
 <p>However, we need to be aware of some technicalities. </p>
 <ul>
-<li>In the first case, not only must $f(n)$ be smaller than $n^{\log_{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log_{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
-<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that<br>$$<br>  af(n/b) \leq cf(n)<br>$$</li>
+<li>In the first case, not only must $f(n)$ be smaller than $n^{\log<em>{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log</em>{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
+<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that <script type="math/tex; mode=display">
+  af(n/b) \leq cf(n)</script></li>
 </ul>
 </blockquote>
 <div class="note [alert]">
             <p>Note that the three cases do not cover all the possibilities for $f(n)$. There is a gap between <code>cases 1</code> and <code>2</code> when $f(n)$ is smaller than $n^{\log_{b}{a}}$ but not polynomially smaller. Similarly, there is a gao between <code>cases 2</code> and <code>3</code>. </p><p>If the function $f(n)$ falls into one of these gaps, or if the regularity condition in <code>case 3</code> fails to hold. we cannot use the master method to solve the recurrence</p>
           </div>
-
 <h1 id="Using-the-Master-Method"><a href="#Using-the-Master-Method" class="headerlink" title="Using the Master Method"></a>Using the Master Method</h1><p>To use the master method, we simply determine which case of the master theorem applies.</p>
 <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><div class="note ">
-            <p>$$<br>    T(n) = 9T(n/3) + n<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 9T(n/3) + n</script>
           </div>
-
-<p>For this recurrence, we have $a = 9, b = 3, f(n) = n$, and thus we have that $n^{log_{b}{a}} = n^{log_{3}{9}} = \Theta(n^{2})$. Since $f(n) = O(n^{log_{3}{9-\epsilon}})$, where $\epsilon = 1$, we can apply <code>case 1</code> of the master theorem and conclude that solution is $T(n) = \Theta(n^{2})$.</p>
+<p>For this recurrence, we have $a = 9, b = 3, f(n) = n$, and thus we have that $n^{log<em>{b}{a}} = n^{log</em>{3}{9}} = \Theta(n^{2})$. Since $f(n) = O(n^{log_{3}{9-\epsilon}})$, where $\epsilon = 1$, we can apply <code>case 1</code> of the master theorem and conclude that solution is $T(n) = \Theta(n^{2})$.</p>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><div class="note ">
-            <p>$$<br>    T(n) = T(2n/3) + 1<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = T(2n/3) + 1</script>
           </div>
-
-<p>we have $a = 1, b = 3/2, f(n) = 1$, and thus $n^{log_{b}{a}} = n^{log_{3/2}{1}} = 1$. Since $f(n) = \Theta(n^{log_{b}{a}})=\Theta(1)$, we can apply <code>case 2</code> and conclude that solution is $T(n) = \Theta(\lg{n})$.</p>
+<p>we have $a = 1, b = 3/2, f(n) = 1$, and thus $n^{log<em>{b}{a}} = n^{log</em>{3/2}{1}} = 1$. Since $f(n) = \Theta(n^{log_{b}{a}})=\Theta(1)$, we can apply <code>case 2</code> and conclude that solution is $T(n) = \Theta(\lg{n})$.</p>
 <h2 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h2><div class="note ">
-            <p>$$<br>    T(n) = 3T(n/4) + n\lg{n}<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 3T(n/4) + n\lg{n}</script>
           </div>
-
-<p>we have $a = 3, b = 4, f(n) = n\lg{n}$, and $n^{log_{b}{a}} = n^{log_{4}{3}} = O(n^{0.793})$. Since $f(n) = \Omega(n^{log_{4}{3+\epsilon}})$,where $\epsilon \approx 0.2$,  we can apply <code>case 3</code> if we can show that the regularity condition holds for $f(n)$.</p>
+<p>we have $a = 3, b = 4, f(n) = n\lg{n}$, and $n^{log<em>{b}{a}} = n^{log</em>{4}{3}} = O(n^{0.793})$. Since $f(n) = \Omega(n^{log_{4}{3+\epsilon}})$,where $\epsilon \approx 0.2$,  we can apply <code>case 3</code> if we can show that the regularity condition holds for $f(n)$.</p>
 <blockquote>
-<p>For sufficiently large $n$, we have that<br>$$<br>af(n/b) = a\left(\dfrac{n}{b}\lg{\left(\dfrac{n}{b}\right)}\right) = \dfrac{3n}{4}\lg{\left(\dfrac{n}{4}\right)} \leq \dfrac{3n}{4}\lg{n} = cf(n)<br>$$<br>for $c = 3/4$.</p>
+<p>For sufficiently large $n$, we have that</p>
+<script type="math/tex; mode=display">
+af(n/b) = a\left(\dfrac{n}{b}\lg{\left(\dfrac{n}{b}\right)}\right) = \dfrac{3n}{4}\lg{\left(\dfrac{n}{4}\right)} \leq \dfrac{3n}{4}\lg{n} = cf(n)</script><p>for $c = 3/4$.</p>
 </blockquote>
 <p>Consequently, by <code>case 3</code>, the solution is $T(n) = \Theta(n\lg{n})$.</p>
 <h2 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h2><div class="note ">
-            <p>$$<br>    T(n) = 2T(n/2) + n\lg{n}<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 2T(n/2) + n\lg{n}</script>
           </div>
-
-<p>even though it appears to have the proper form: $a = 2, b = 2, f(n) = n\lg{n}$, and $n^{\log_{b}{a}} = n$. we might mistakenly think that <code>case 3</code> should apply, since $f(n) = n\lg{n}$ is asymptotically larger than $n^{\log_{b}{a}} = n$. The problem is that is is not <strong>polynomially</strong> larger. Consequently, the recurrence falls into the gap between <code>case 2</code> and <code>case 3</code>.</p>
+<p>even though it appears to have the proper form: $a = 2, b = 2, f(n) = n\lg{n}$, and $n^{\log<em>{b}{a}} = n$. we might mistakenly think that <code>case 3</code> should apply, since $f(n) = n\lg{n}$ is asymptotically larger than $n^{\log</em>{b}{a}} = n$. The problem is that is is not <strong>polynomially</strong> larger. Consequently, the recurrence falls into the gap between <code>case 2</code> and <code>case 3</code>.</p>
 ]]></content>
       <categories>
         <category>Notes</category>
@@ -222,7 +203,6 @@
     <url>/2020/04/19/test/</url>
     <content><![CDATA[<p>This blog is for test the website</p>
  <a id="more"></a>
-
 <h1 id="Title-1"><a href="#Title-1" class="headerlink" title="Title 1"></a>Title 1</h1><h2 id="Title-2"><a href="#Title-2" class="headerlink" title="Title 2"></a>Title 2</h2><h3 id="Title-3"><a href="#Title-3" class="headerlink" title="Title 3"></a>Title 3</h3><h4 id="Title-4"><a href="#Title-4" class="headerlink" title="Title 4"></a>Title 4</h4><p>This is a paragraph, thisis <strong>bold</strong>, <em>italic</em>, underline and <del>strikeout</del>.</p>
 <blockquote>
 <p>This is a quote</p>
@@ -237,36 +217,39 @@
 <li>item 2</li>
 <li>item 3</li>
 </ol>
-<p><img src="https://avatars0.githubusercontent.com/u/20491530?s=460&u=17d737cc10627ca94ad86dafdd50e9305d38ec4b&v=4" alt="Avatar"></p>
+<p><img src="https://avatars0.githubusercontent.com/u/20491530?s=460&amp;u=17d737cc10627ca94ad86dafdd50e9305d38ec4b&amp;v=4" alt="Avatar"></p>
 <p>fork me on <a href="https://github.com/LeoLai0926" target="_blank" rel="noopener">github</a></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
 <th>Tables</th>
-<th align="center">Are</th>
-<th align="right">Cool</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>col 3 is</td>
-<td align="center">right-aligned</td>
-<td align="right">$1600</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
 </tr>
 <tr>
 <td>col 2 is</td>
-<td align="center">centered</td>
-<td align="right">$12</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
 </tr>
 <tr>
 <td>zebra stripes</td>
-<td align="center">are neat</td>
-<td align="right">$1</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>Here <code>is inline code</code>.</p>
 <p>Here is block code</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print</span><span class="params">(hello)</span>:</span></span><br><span class="line">    print(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
-
 <p>Here is a saperate line</p>
 <hr>
 <p>Test for mathjax</p>
@@ -274,28 +257,27 @@
 <p>$\Gamma$, $\Lambda$, $\Omega$</p>
 <p>$\pm$, $\bigtriangleup$, $\bigcirc$</p>
 <p>$\leq$, $\equiv$, $\neq$</p>
-<p>$$<br>    x_{1, 2} = \dfrac{-b\pm\sqrt{b^{2} - 4ac}}{2a}<br>$$</p>
-<p>$$<br>    \int_{a}^{b}{f(x)dx} = f(\xi)(b-a)<br>$$</p>
-<p>$$<br>    f(a) = \dfrac{1}{2\pi i}\oint_{\gamma}{\dfrac{f(z)}{z-a}dz}<br>$$</p>
-]]></content>
+<script type="math/tex; mode=display">
+    x_{1, 2} = \dfrac{-b\pm\sqrt{b^{2} - 4ac}}{2a}</script><script type="math/tex; mode=display">
+    \int_{a}^{b}{f(x)dx} = f(\xi)(b-a)</script><script type="math/tex; mode=display">
+    f(a) = \dfrac{1}{2\pi i}\oint_{\gamma}{\dfrac{f(z)}{z-a}dz}</script>]]></content>
   </entry>
   <entry>
     <title>逻辑斯蒂回归(Logistic Regression)</title>
     <url>/2020/04/22/%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/</url>
     <content><![CDATA[<h1 id="逻辑斯蒂回归"><a href="#逻辑斯蒂回归" class="headerlink" title="逻辑斯蒂回归"></a>逻辑斯蒂回归</h1><p><strong>逻辑斯蒂回归(Logistic regression)</strong>是经典的分类算法, 属于对数线性模型. 本篇主要介绍逻辑斯蒂回归模型. 后续会介绍与之相似的<strong>最大熵模型(Maximum entropy model)</strong>.</p>
 <a id="more"></a>
-
 <h2 id="逻辑斯蒂回归模型"><a href="#逻辑斯蒂回归模型" class="headerlink" title="逻辑斯蒂回归模型"></a>逻辑斯蒂回归模型</h2><h3 id="逻辑斯蒂分布-Logistic-distribution"><a href="#逻辑斯蒂分布-Logistic-distribution" class="headerlink" title="逻辑斯蒂分布(Logistic distribution)"></a>逻辑斯蒂分布(Logistic distribution)</h3><div class="note ">
-            <p><strong>定义</strong> (逻辑斯蒂分布) 设 $X$ 为离散随机变量, $X$ 服从逻辑斯蒂分布是指 $X$ 具有以下分布函数和密度函数<br>$$<br>\begin{aligned}<br>    F(x) =&amp; P(X\leq x) = \dfrac{1}{1 + e^{-(x-\mu)/\gamma}} \<br>    f(x) =&amp; F’(x) = \dfrac{e^{-(x-\mu)/\gamma}}{\gamma(1 + e^{-(x-\mu)/\gamma})^{2}}<br>\end{aligned}<br>$$<br>其中 $\mu$ 为位置参数, $\gamma&gt; 0$ 为形状参数. </p>
+            <p><strong>定义</strong> (逻辑斯蒂分布) 设 $X$ 为离散随机变量, $X$ 服从逻辑斯蒂分布是指 $X$ 具有以下分布函数和密度函数</p><script type="math/tex; mode=display">    F(x) = P(X\leq x) = \dfrac{1}{1 + e^{-(x-\mu)/\gamma}} \\    f(x) = F'(x) = \dfrac{e^{-(x-\mu)/\gamma}}{\gamma(1 + e^{-(x-\mu)/\gamma})^{2}}</script><p>其中 $\mu$ 为位置参数, $\gamma&gt; 0$ 为形状参数. </p>
           </div>
-
-<p>分布函数属于逻辑斯蒂函数, 为一条 $S$ 型曲线(Sigmoid function). 以 $(\mu, \dfrac{1}{2})$ 为中心对称. 即满足<br>$$<br>    F(-x + \mu) - \dfrac{1}{2} = -F(x + \mu) + \dfrac{1}{2}<br>$$</p>
-<blockquote>
+<p>分布函数属于逻辑斯蒂函数, 为一条 $S$ 型曲线(Sigmoid function). 以 $(\mu, \dfrac{1}{2})$ 为中心对称. 即满足</p>
+<script type="math/tex; mode=display">
+    F(-x + \mu) - \dfrac{1}{2} = -F(x + \mu) + \dfrac{1}{2}</script><blockquote>
 <p>形状参数 $\gamma$ 越小, 曲线在中心附近增长越快.</p>
 </blockquote>
 <h3 id="二项逻辑斯蒂回归模型"><a href="#二项逻辑斯蒂回归模型" class="headerlink" title="二项逻辑斯蒂回归模型"></a>二项逻辑斯蒂回归模型</h3><p>二项逻辑斯蒂回归模型 (binomial logistic regression model) 是一种<strong>分类模型</strong>. 由条件概率分布 $P(Y|X)$ 表示. 形式为参数化的逻辑斯蒂分布.</p>
 <div class="note ">
-            <p><strong>定义</strong> (逻辑斯蒂回归模型) 二项逻辑斯蒂回归模型是如下的条件概率分布<br>$$<br>\begin{aligned}<br>    P(Y = 1|X) =&amp; \dfrac{\exp{(w \cdot x + b)}}{1 + \exp{(w \cdot x + b)}} \<br>    P(Y = 0|X) =&amp; \dfrac{1}{1 + \exp{(w \cdot x + b)}}<br>\end{aligned}<br>$$<br>其中, $w \in \mathbb{R}^{n}, b\in \mathbb{R}$ 为参数, $x \in \mathbb{R}^{n}$ 为输入, $Y \in {0, 1}$ 为输出.</p>
+            <p><strong>定义</strong> (逻辑斯蒂回归模型) 二项逻辑斯蒂回归模型是如下的条件概率分布</p><script type="math/tex; mode=display">P(Y = 1|X) = \dfrac{\exp{(w \cdot x + b)}}{1 + \exp{(w \cdot x + b)}} \\P(Y = 0|X) = \dfrac{1}{1 + \exp{(w \cdot x + b)}}</script><p>其中, $w \in \mathbb{R}^{n}, b\in \mathbb{R}$ 为参数, $x \in \mathbb{R}^{n}$ 为输入, $Y \in {0, 1}$ 为输出.</p>
           </div>
 ]]></content>
       <categories>

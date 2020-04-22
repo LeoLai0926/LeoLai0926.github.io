@@ -23,12 +23,12 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="The master method provides a “cookbook” method for solving recurrences of the form$$    T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}$$where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically pos">
+  <meta name="description" content="The master method provides a “cookbook” method for solving recurrences of the form      T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically posit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Master Method and the Master Theorem">
 <meta property="og:url" content="http://yoursite.com/2020/04/19/The%20Master%20Theorem/index.html">
 <meta property="og:site_name" content="罗塞塔之石">
-<meta property="og:description" content="The master method provides a “cookbook” method for solving recurrences of the form$$    T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}$$where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically pos">
+<meta property="og:description" content="The master method provides a “cookbook” method for solving recurrences of the form      T(n) &#x3D; aT(n&#x2F;b) + f(n) \tag{1}where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically posit">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-19T13:36:58.000Z">
 <meta property="article:modified_time" content="2020-04-22T01:54:14.021Z">
@@ -270,15 +270,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>The master method provides a “cookbook” method for solving recurrences of the form<br>$$<br>    T(n) = aT(n/b) + f(n) \tag{1}<br>$$<br>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
+        <p>The master method provides a “cookbook” method for solving recurrences of the form</p>
+<script type="math/tex; mode=display">
+    T(n) = aT(n/b) + f(n) \tag{1}</script><p>where $a \geq 1$ and $b \geq 1$ are constants and $f(n)$ is an asymptotically positive function. This useful method depends on the Master theorem.</p>
 <a id="more"></a>
-
 <h1 id="The-Master-Method"><a href="#The-Master-Method" class="headerlink" title="The Master Method"></a>The Master Method</h1><p>The recurrence (1) describes the running time of an algorithm that divides a problem of size $n$ into $a$ subproblems, each of size $n/b$, where $a$ and $b$ are positive constants. The $a$ subproblems are solved recursively, each in time $T(n/b)$. The function $f(n)$ encompasses the cost of dividing the problem and combining the results of the subproblems.</p>
 <p>As a matter of technical correctness, the recurrence is not actually well defined, because $n/b$ might not be an integer. Replacing each of the $a$ terms $T(n/b)$ with either $T(\lfloor n/b \rfloor)$ or $T(\lceil n/b \rceil)$ will not affect the asymptotic behavior of the recurrence.</p>
 <h1 id="The-Master-Theorem"><a href="#The-Master-Theorem" class="headerlink" title="The Master Theorem"></a>The Master Theorem</h1><div class="note [default]">
-            <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence<br>$$<br>    T(n) = aT(n/b) + f(n)<br>$$<br>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log_{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log_{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log_{b}{a}})$, then $T(n) = \Theta(n^{\log_{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
+            <p>Theorem 4.1 (Master theorem)</p><p>Let $a\geq 1$ and $b \geq 1$ be constants, let $f(n)$ be a function, and let $T(n)$ be defined<br>on the nonnegative integers by the recurrence</p><script type="math/tex; mode=display">    T(n) = aT(n/b) + f(n)</script><p>where we interpret $n/b$ to mean either $\lfloor n/b \rfloor$ or $\lceil n/b \rceil$. Then $T(n$ has the following asymptotic bounds:</p><ol><li>If $f(n) = O(n^{\log<em>{b}(a-\epsilon)})$ for some constant $\epsilon &gt; 0$, then $T(n) = \Theta(n^{\log</em>{b}{a}})$.</li><li>If $f(n) = \Theta(n^{\log<em>{b}{a}})$, then $T(n) = \Theta(n^{\log</em>{b}{a}}\lg{n})$.</li><li>If $f(n) = \Omega(n^{\log_{b}{(a + \epsilon)}})$ for some constant $\epsilon &gt; 0$, and if $af(n/b) \leq cf(n)$ for some constant $c&lt;1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.</li></ol>
           </div>
-
 <blockquote>
 <p>Notation Explanation</p>
 <ol>
@@ -292,46 +292,44 @@
 </blockquote>
 <p>In each of the three cases, we compare the function $f(n)$ with the function $n^{\log_{b}{a}}$. Intuitively, the larger of the two functions determines the solution to the recurrence.</p>
 <ul>
-<li>If, as in <code>case 1</code>, the function $n^{\log_{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log_{b}{a}})$</li>
+<li>If, as in <code>case 1</code>, the function $n^{\log<em>{b}{a}}$ is the larger, then the solution is $T(n) = \Theta(n^{\log</em>{b}{a}})$</li>
 <li>If, as in <code>case 3</code>, the function $f(n)$ is larger, then the solution is $T(n)  = \Theta(f(n))$.</li>
 <li>If, as in <code>case 2</code>, the two functions are the same size, we multiply by a logarithmic factor, and the solution is $T(n) = \Theta(n^{\log_{b}{a}}\lg{n}) = \Theta(f(n)\lg{n})$.</li>
 </ul>
 <blockquote>
 <p>However, we need to be aware of some technicalities. </p>
 <ul>
-<li>In the first case, not only must $f(n)$ be smaller than $n^{\log_{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log_{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
-<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that<br>$$<br>  af(n/b) \leq cf(n)<br>$$</li>
+<li>In the first case, not only must $f(n)$ be smaller than $n^{\log<em>{b}{a}}$, it must be <strong>polynomially</strong> smaller. That is, $f(n)$ must be asymptotically smaller than $n^{\log</em>{b}{a}}$ by a factor of $n^{\epsilon}$ for some constant $\epsilon &gt; 0$. </li>
+<li>In the third case, not only must $f(n)$ be larger than $n^{\log_{b}{a}}$, it also must by <strong>polynomially</strong> larger ad in addition satisfy the “regularity” condition that <script type="math/tex; mode=display">
+  af(n/b) \leq cf(n)</script></li>
 </ul>
 </blockquote>
 <div class="note [alert]">
             <p>Note that the three cases do not cover all the possibilities for $f(n)$. There is a gap between <code>cases 1</code> and <code>2</code> when $f(n)$ is smaller than $n^{\log_{b}{a}}$ but not polynomially smaller. Similarly, there is a gao between <code>cases 2</code> and <code>3</code>. </p><p>If the function $f(n)$ falls into one of these gaps, or if the regularity condition in <code>case 3</code> fails to hold. we cannot use the master method to solve the recurrence</p>
           </div>
-
 <h1 id="Using-the-Master-Method"><a href="#Using-the-Master-Method" class="headerlink" title="Using the Master Method"></a>Using the Master Method</h1><p>To use the master method, we simply determine which case of the master theorem applies.</p>
 <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><div class="note ">
-            <p>$$<br>    T(n) = 9T(n/3) + n<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 9T(n/3) + n</script>
           </div>
-
-<p>For this recurrence, we have $a = 9, b = 3, f(n) = n$, and thus we have that $n^{log_{b}{a}} = n^{log_{3}{9}} = \Theta(n^{2})$. Since $f(n) = O(n^{log_{3}{9-\epsilon}})$, where $\epsilon = 1$, we can apply <code>case 1</code> of the master theorem and conclude that solution is $T(n) = \Theta(n^{2})$.</p>
+<p>For this recurrence, we have $a = 9, b = 3, f(n) = n$, and thus we have that $n^{log<em>{b}{a}} = n^{log</em>{3}{9}} = \Theta(n^{2})$. Since $f(n) = O(n^{log_{3}{9-\epsilon}})$, where $\epsilon = 1$, we can apply <code>case 1</code> of the master theorem and conclude that solution is $T(n) = \Theta(n^{2})$.</p>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><div class="note ">
-            <p>$$<br>    T(n) = T(2n/3) + 1<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = T(2n/3) + 1</script>
           </div>
-
-<p>we have $a = 1, b = 3/2, f(n) = 1$, and thus $n^{log_{b}{a}} = n^{log_{3/2}{1}} = 1$. Since $f(n) = \Theta(n^{log_{b}{a}})=\Theta(1)$, we can apply <code>case 2</code> and conclude that solution is $T(n) = \Theta(\lg{n})$.</p>
+<p>we have $a = 1, b = 3/2, f(n) = 1$, and thus $n^{log<em>{b}{a}} = n^{log</em>{3/2}{1}} = 1$. Since $f(n) = \Theta(n^{log_{b}{a}})=\Theta(1)$, we can apply <code>case 2</code> and conclude that solution is $T(n) = \Theta(\lg{n})$.</p>
 <h2 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h2><div class="note ">
-            <p>$$<br>    T(n) = 3T(n/4) + n\lg{n}<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 3T(n/4) + n\lg{n}</script>
           </div>
-
-<p>we have $a = 3, b = 4, f(n) = n\lg{n}$, and $n^{log_{b}{a}} = n^{log_{4}{3}} = O(n^{0.793})$. Since $f(n) = \Omega(n^{log_{4}{3+\epsilon}})$,where $\epsilon \approx 0.2$,  we can apply <code>case 3</code> if we can show that the regularity condition holds for $f(n)$.</p>
+<p>we have $a = 3, b = 4, f(n) = n\lg{n}$, and $n^{log<em>{b}{a}} = n^{log</em>{4}{3}} = O(n^{0.793})$. Since $f(n) = \Omega(n^{log_{4}{3+\epsilon}})$,where $\epsilon \approx 0.2$,  we can apply <code>case 3</code> if we can show that the regularity condition holds for $f(n)$.</p>
 <blockquote>
-<p>For sufficiently large $n$, we have that<br>$$<br>af(n/b) = a\left(\dfrac{n}{b}\lg{\left(\dfrac{n}{b}\right)}\right) = \dfrac{3n}{4}\lg{\left(\dfrac{n}{4}\right)} \leq \dfrac{3n}{4}\lg{n} = cf(n)<br>$$<br>for $c = 3/4$.</p>
+<p>For sufficiently large $n$, we have that</p>
+<script type="math/tex; mode=display">
+af(n/b) = a\left(\dfrac{n}{b}\lg{\left(\dfrac{n}{b}\right)}\right) = \dfrac{3n}{4}\lg{\left(\dfrac{n}{4}\right)} \leq \dfrac{3n}{4}\lg{n} = cf(n)</script><p>for $c = 3/4$.</p>
 </blockquote>
 <p>Consequently, by <code>case 3</code>, the solution is $T(n) = \Theta(n\lg{n})$.</p>
 <h2 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h2><div class="note ">
-            <p>$$<br>    T(n) = 2T(n/2) + n\lg{n}<br>$$</p>
+            <script type="math/tex; mode=display">    T(n) = 2T(n/2) + n\lg{n}</script>
           </div>
-
-<p>even though it appears to have the proper form: $a = 2, b = 2, f(n) = n\lg{n}$, and $n^{\log_{b}{a}} = n$. we might mistakenly think that <code>case 3</code> should apply, since $f(n) = n\lg{n}$ is asymptotically larger than $n^{\log_{b}{a}} = n$. The problem is that is is not <strong>polynomially</strong> larger. Consequently, the recurrence falls into the gap between <code>case 2</code> and <code>case 3</code>.</p>
+<p>even though it appears to have the proper form: $a = 2, b = 2, f(n) = n\lg{n}$, and $n^{\log<em>{b}{a}} = n$. we might mistakenly think that <code>case 3</code> should apply, since $f(n) = n\lg{n}$ is asymptotically larger than $n^{\log</em>{b}{a}} = n$. The problem is that is is not <strong>polynomially</strong> larger. Consequently, the recurrence falls into the gap between <code>case 2</code> and <code>case 3</code>.</p>
 
     </div>
 
@@ -508,7 +506,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">7k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
