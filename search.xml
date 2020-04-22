@@ -282,7 +282,19 @@
   <entry>
     <title>逻辑斯蒂回归</title>
     <url>/2020/04/22/%E9%80%BB%E8%BE%91%E6%96%AF%E8%92%82%E5%9B%9E%E5%BD%92/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><strong>逻辑斯蒂回归(Logistic regression)</strong>是经典的分类算法, 属于对数线性模型. 本篇主要介绍逻辑斯蒂回归模型. 后续会介绍与之相似的<strong>最大熵模型(Maximum entropy model)</strong>.</p>
+<a id="more"></a>
+
+<h1 id="逻辑斯蒂回归"><a href="#逻辑斯蒂回归" class="headerlink" title="逻辑斯蒂回归"></a>逻辑斯蒂回归</h1><h2 id="逻辑斯蒂回归模型"><a href="#逻辑斯蒂回归模型" class="headerlink" title="逻辑斯蒂回归模型"></a>逻辑斯蒂回归模型</h2><h3 id="逻辑斯蒂分布-Logistic-distribution"><a href="#逻辑斯蒂分布-Logistic-distribution" class="headerlink" title="逻辑斯蒂分布(Logistic distribution)"></a>逻辑斯蒂分布(Logistic distribution)</h3><div class="note ">
+            <p><strong>定义</strong> (逻辑斯蒂分布) 设 $X$ 为离散随机变量, $X$ 服从逻辑斯蒂分布是指 $X$ 具有以下分布函数和密度函数<br>$$<br>\begin{aligned}<br>    F(x) =&amp; P(X\leq x) = \dfrac{1}{1 + e^{-(x-\mu)/\gamma}} \<br>    f(x) =&amp; F’(x) = \dfrac{e^{-(x-\mu)/\gamma}}{\gamma(1 + e^{-(x-\mu)/\gamma})^{2}}<br>\end{aligned}<br>$$<br>其中 $\mu$ 为位置参数, $\gamma&gt; 0$ 为形状参数. </p>
+          </div>
+
+<p>分布函数属于逻辑斯蒂函数, 为一条 $S$ 型曲线(Sigmoid function). 以 $(\mu, \dfrac{1}{2})$ 为中心对称. 即满足<br>$$<br>    F(-x + \mu) - \dfrac{1}{2} = -F(x + \mu) + \dfrac{1}{2}<br>$$</p>
+<blockquote>
+<p>形状参数 $\gamma$ 越小, 曲线在中心附近增长越快.</p>
+</blockquote>
+<h3 id="二项逻辑斯蒂回归模型"><a href="#二项逻辑斯蒂回归模型" class="headerlink" title="二项逻辑斯蒂回归模型"></a>二项逻辑斯蒂回归模型</h3><p>二项逻辑斯蒂回归模型 (binomial logistic regression model) 是一种<strong>分类模型</strong></p>
+]]></content>
       <categories>
         <category>Notes</category>
       </categories>
