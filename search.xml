@@ -293,8 +293,10 @@
 <blockquote>
 <p>形状参数 $\gamma$ 越小, 曲线在中心附近增长越快.</p>
 </blockquote>
-<h3 id="二项逻辑斯蒂回归模型"><a href="#二项逻辑斯蒂回归模型" class="headerlink" title="二项逻辑斯蒂回归模型"></a>二项逻辑斯蒂回归模型</h3><p>二项逻辑斯蒂回归模型 (binomial logistic regression model) 是一种<strong>分类模型</strong></p>
-]]></content>
+<h3 id="二项逻辑斯蒂回归模型"><a href="#二项逻辑斯蒂回归模型" class="headerlink" title="二项逻辑斯蒂回归模型"></a>二项逻辑斯蒂回归模型</h3><p>二项逻辑斯蒂回归模型 (binomial logistic regression model) 是一种<strong>分类模型</strong>. 由条件概率分布 $P(Y|X)$ 表示. 形式为参数化的逻辑斯蒂分布.</p>
+<div class="note ">
+            <p><strong>定义</strong> (逻辑斯蒂回归模型) 二项逻辑斯蒂回归模型是如下的条件概率分布<br>$$<br>\begin{aligned}<br>    P(Y = 1|X) =&amp; \dfrac{\exp{(w \cdot x + b)}}{1 + \exp{(w \cdot x + b)}} \<br>    P(Y = 0|X) =&amp; \dfrac{1}{1 + \exp{(w \cdot x + b)}}<br>\end{aligned}<br>$$<br>其中, $w \in \mathbb{R}^{n}, b\in \mathbb{R}$ 为参数, $x \in \mathbb{R}^{n}$ 为输入, $Y \in {0, 1}$ 为输出.</p>
+          </div>]]></content>
       <categories>
         <category>Notes</category>
       </categories>
