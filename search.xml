@@ -4,6 +4,8 @@
     <title>基于深度学习的目标检测技术演进</title>
     <url>/2020/04/20/CV-review/</url>
     <content><![CDATA[<h1 id="目标检测常见算法"><a href="#目标检测常见算法" class="headerlink" title="目标检测常见算法"></a>目标检测常见算法</h1><p>目标检测(object detection) 就是在给定的图片中精确找到物体所在位置, 并标注出物体的类别. object detection要解决的问题就是物体在哪里以及是什么的整个流程问题. 然而这个问题可不是那么容易解决的，物体的尺寸变化范围很大，摆放物体的角度，姿态不定，而且可以出现在图片的任何地方，更何况物体还可以是多个类别。</p>
+<a id="more"></a>
+
 <h2 id="目前学术和工业界目标检测算法"><a href="#目前学术和工业界目标检测算法" class="headerlink" title="目前学术和工业界目标检测算法"></a>目前学术和工业界目标检测算法</h2><ol>
 <li><p>传统的目标检测算法</p>
 <ul>
@@ -52,7 +54,7 @@
 </ul>
 </li>
 </ol>
-<p><a href="https://imgchr.com/i/J13NtJ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/20/J13NtJ.jpg" alt="J13NtJ.jpg"></a></p>
+<p><img src="https://s1.ax1x.com/2020/04/20/J13NtJ.jpg" alt=""></p>
 <h2 id="传统目标检测流程"><a href="#传统目标检测流程" class="headerlink" title="传统目标检测流程"></a>传统目标检测流程</h2><ol>
 <li>区域选择<blockquote>
 <p>穷举策略：采用滑动窗口，且设置不同的大小，不同的长宽比对图像进行遍历，时间复杂度高</p>
@@ -68,20 +70,73 @@
 </li>
 </ol>
 <h2 id="传统的目标检测算法"><a href="#传统的目标检测算法" class="headerlink" title="传统的目标检测算法"></a>传统的目标检测算法</h2><h3 id="从图像识别的任务说起"><a href="#从图像识别的任务说起" class="headerlink" title="从图像识别的任务说起"></a>从图像识别的任务说起</h3><p>考虑一个图像任务, 既要把图中的物体识别出来，又要用方框框出它的位置。</p>
-<p><a href="https://imgchr.com/i/J18gbT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/20/J18gbT.jpg" alt="J18gbT.jpg"></a></p>
+<p><img src="https://s1.ax1x.com/2020/04/20/J18gbT.jpg" alt=""></p>
 <p>这个任务本质上就是下面这两个问题：</p>
 <ol>
-<li>图像识别</li>
+<li>识别</li>
 <li>定位</li>
 </ol>
-<p><strong>图像识别（classification）</strong></p>
-<p>输入：图片<br>输出：物体的类别<br>评估方法：准确率</p>
+<div class="note ">
+            <p><strong>识别(recognition)</strong><br>输入: 图片<br>输出: 物体的类别<br>评估方法: 准确率</p>
+          </div>
+
+<p><img src="https://s1.ax1x.com/2020/04/21/J87C8K.jpg" alt=""></p>
+<div class="note ">
+            <p><strong>定位(localization)</strong><br>输入：图片<br>输出：方框在图片中的位置（x,y,w,h）<br>评估方法：检测评价函数Intersection-Over-Union(IoU)</p><blockquote><p><strong>Intersection-Over-Union(IoU)</strong><br>IoU是在目标检测的评价体系中的一种评估指标. 简单来讲就是模型产生的目标窗口和原来标记窗口的交叠率。<br>具体我们可以简单的理解为：检测结果(Detection Result, DR)与真实值(Ground Truth, GT)的交集比上它们的并集，即为检测的准确率 IoU<br>$$<br>\text{IoU} = \dfrac{\text{DR} \bigcap \text{GT}}{\text{DR} \bigcup \text{GT}}<br>$$<br><img src="https://s1.ax1x.com/2020/04/21/J8qTZ4.png" alt=""></p></blockquote>
+          </div>
+
+<p><img src="https://s1.ax1x.com/2020/04/21/J8Ti0s.png" alt=""></p>
+<p>卷积神经网络CNN已经帮我们完成了图像识别（判定是猫还是狗）的任务了，我们只需要添加一些额外的功能来完成定位任务即可。</p>
+<h3 id="如何解决定位问题"><a href="#如何解决定位问题" class="headerlink" title="如何解决定位问题"></a>如何解决定位问题</h3><h4 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h4><p>将定位问题看做一个回归问题, 我们需要预测出 $(x, y, w, h)$ 四个参数的值, 从而得出方框的位置.</p>
+<p><img src="https://s1.ax1x.com/2020/04/21/J8Oo59.png" alt=""></p>
+<ul>
+<li>步骤1<ul>
+<li>先解决简单问题, 搭建一个识别图像的神经网络</li>
+<li>在AlexNet\VGG Net\Google Net上微调(fine-tuning)一下<br>  <img src="https://s1.ax1x.com/2020/04/21/J8j4h9.jpg" alt=""></li>
+</ul>
+</li>
+<li>步骤2<ul>
+<li>在上述神经网络的尾部展开(在CNN的结尾处做出改进, 增加两个头:”分类头”与”回归头”)</li>
+<li>成为 Classification + Regression 模式<br>  <img src="https://s1.ax1x.com/2020/04/21/JGkkM4.png" alt=""></li>
+</ul>
+</li>
+<li>步骤3<ul>
+<li>Regression 部分采用欧氏距离损失函数</li>
+<li>采用SGD的优化方式进行训练</li>
+</ul>
+</li>
+<li>步骤4<ul>
+<li>预测阶段将两个”头部”拼接</li>
+<li>完成不同的功能</li>
+</ul>
+</li>
+</ul>
+<p>此处需要进行两次 fine-tuning</p>
+<ol>
+<li>第一次在AlexNet上进行.</li>
+<li>第二次将头部改为 Regression head(前面的部分不变, 做一次fine-tuning)</li>
+</ol>
+<blockquote>
+<p>Regression 的部分加在哪里?</p>
+<ul>
+<li>加在最后一个卷积层后面(如VGG Net)</li>
+<li>加在最后一个全连接层后面(如R-CNN)</li>
+</ul>
+</blockquote>
+<p>然而 Regression 太难做了, 应当想方设法转换成为 Classification 问题. Regression 问题的训练参数收敛时间相较 Classification 问题要长得多. 所以上面的网络采取了用 Classification 的网络来计算出网络共同部分的连接权值.</p>
+<h4 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h4><p>取图像窗口</p>
+<ul>
+<li>首先还是刚才的 Classification + Regression 的思路</li>
+<li>在图像中取不同大小的”框”</li>
+<li>让不同大小的”框”出现在不同的位置, 给出这个”框”的得分</li>
+<li>取得分最高的”框”</li>
+</ul>
 ]]></content>
       <categories>
         <category>Notes</category>
       </categories>
       <tags>
-        <tag>cv, RCNN, YOLO,</tag>
+        <tag>cv, RCNN, YOLO</tag>
       </tags>
   </entry>
   <entry>
