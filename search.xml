@@ -136,7 +136,9 @@
         <category>Notes</category>
       </categories>
       <tags>
-        <tag>cv, RCNN, YOLO</tag>
+        <tag>CV</tag>
+        <tag>RCNN</tag>
+        <tag>YOLO</tag>
       </tags>
   </entry>
   <entry>
@@ -210,6 +212,8 @@
       </categories>
       <tags>
         <tag>Algorithm</tag>
+        <tag>Master Method</tag>
+        <tag>Master Theorem</tag>
       </tags>
   </entry>
   <entry>
